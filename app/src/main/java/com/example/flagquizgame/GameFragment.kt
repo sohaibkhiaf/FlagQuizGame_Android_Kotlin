@@ -13,6 +13,7 @@ class GameFragment : Fragment() {
 
     // views declaration
     private lateinit var nextButton_tv : TextView
+    private lateinit var chooseAnswer : TextView
     private lateinit var qFlag_iv : ImageView
 
     // options
@@ -61,7 +62,10 @@ class GameFragment : Fragment() {
         option3Wrong_iv = view.findViewById(R.id.gameFragment_iv_option3Wrong)
 
         // next button initialization
-        nextButton_tv = view.findViewById(R.id.gameFragment_tv_button)
+        nextButton_tv = view.findViewById(R.id.gameFragment_tv_nextButton)
+
+        // message text
+        chooseAnswer = view.findViewById(R.id.gameFragment_tv_chooseAnswer)
 
         generateQuestion()
 
@@ -121,6 +125,7 @@ class GameFragment : Fragment() {
             if (qCountry.id == c1.id) {
                 option1Correct_iv.visibility = View.VISIBLE
                 nextButton_tv.visibility = View.VISIBLE
+                chooseAnswer.visibility = View.GONE
             }else {
                 option1Wrong_iv.visibility = View.VISIBLE
             }
@@ -131,6 +136,7 @@ class GameFragment : Fragment() {
             if (qCountry.id == c2.id) {
                 option2Correct_iv.visibility = View.VISIBLE
                 nextButton_tv.visibility = View.VISIBLE
+                chooseAnswer.visibility = View.GONE
             }else {
                 option2Wrong_iv.visibility = View.VISIBLE
             }
@@ -141,10 +147,14 @@ class GameFragment : Fragment() {
             if (qCountry.id == c3.id) {
                 option3Correct_iv.visibility = View.VISIBLE
                 nextButton_tv.visibility = View.VISIBLE
+                chooseAnswer.visibility = View.GONE
             }else {
                 option3Wrong_iv.visibility = View.VISIBLE
             }
         }
+
+        chooseAnswer.visibility = View.VISIBLE
+        nextButton_tv.visibility = View.GONE
 
     }
 
