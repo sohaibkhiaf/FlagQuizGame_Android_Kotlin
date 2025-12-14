@@ -20,7 +20,7 @@
         android:id="@+id/ll_buttonContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginHorizontal="10dp"
+        android:layout_marginHorizontal="@dimen/_6sdp"
         android:background="@drawable/bottom_navigation_bg"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -29,23 +29,17 @@
         <ImageView
             android:id="@+id/iv_gameButton"
             android:layout_width="0dp"
-            android:layout_height="76dp"
+            android:layout_height="@dimen/_42sdp"
             android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
+            android:padding="@dimen/_6sdp"
             android:src="@drawable/icon_controller"
             app:tint="@color/white" />
         <ImageView
-            android:id="@+id/iv_archiveButton"
+            android:id="@+id/iv_discoverButton"
             android:layout_width="0dp"
-            android:layout_height="76dp"
+            android:layout_height="@dimen/_42sdp"
             android:layout_weight="1"
-            android:background="?attr/selectableItemBackground"
-            android:clickable="true"
-            android:focusable="true"
-            android:padding="10dp"
+            android:padding="@dimen/_6sdp"
             android:src="@drawable/icon_flag"
             app:tint="@color/white" />
     </LinearLayout>
