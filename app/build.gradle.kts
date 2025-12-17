@@ -6,17 +6,17 @@ plugins {
 }
 
 android {
-    namespace = "com.example.flagquizgame"
+    namespace = "com.deveenvi.flagquizgame"
     compileSdk {
         version = release(36)
     }
 
     defaultConfig {
-        applicationId = "com.example.flagquizgame"
+        applicationId = "com.deveenvi.flagquizgame"
         minSdk = 28
         targetSdk = 36
         versionCode = 1
-        versionName = "1.0"
+        versionName = "1.1"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
