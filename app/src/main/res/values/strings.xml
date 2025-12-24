@@ -6,4 +6,6 @@
     <string name="game_next">Next ></string>
     <string name="game_try_again">Try again.</string>
     <string name="main_press_back">Press back again to exit</string>
+    <string name="discover_search">Search a country...</string>
+    <string name="discover_no_results">No results found</string>
 </resources>

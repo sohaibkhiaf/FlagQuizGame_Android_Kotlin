@@ -3,19 +3,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".DiscoverFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/discoverFragment_cl_container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="10dp"
-        android:padding="10dp"
-        android:background="@drawable/container_bg" >
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/discoverFragment_rv_countries"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:id="@+id/discoverFragment_ll_navBarContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:orientation="vertical"
+            android:layout_height="@dimen/_44sdp"
+            android:background="@drawable/nav_bar_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <EditText
+                android:id="@+id/discoverFragment_et_discoverNavBar"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:background="@drawable/nav_bar_bg"
+                android:drawableEnd="@drawable/icon_search"
+                android:drawableTint="@color/white"
+                android:hint="@string/discover_search"
+                android:textColorHint="@color/white_hint"
+                android:textSize="@dimen/_13ssp"
+                android:textColor="@color/white"
+                android:paddingVertical="@dimen/_10sdp"
+                android:paddingHorizontal="@dimen/_20sdp" />
+        </LinearLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/discoverFragment_cl_container"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="@dimen/_6sdp"
+            android:background="@drawable/container_bg"
+            android:padding="@dimen/_6sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/discoverFragment_ll_navBarContainer">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/discoverFragment_rv_countries"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <LinearLayout
+            android:id="@+id/discoverFragment_ll_noResults"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_120sdp"
+            android:orientation="vertical"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:src="@drawable/icon_error"
+                android:tint="@color/white" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:textAlignment="center"
+                android:text="@string/discover_no_results"
+                android:textStyle="bold"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14ssp" />
+        </LinearLayout>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </FrameLayout>

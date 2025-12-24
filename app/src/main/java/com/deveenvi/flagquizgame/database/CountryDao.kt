@@ -38,4 +38,7 @@ interface CountryDao {
     @Query("SELECT * FROM countries WHERE id NOT IN (:id1, :id2, :id3, :id4) ORDER BY RANDOM() LIMIT 1")
     suspend fun getRandomCountry(id1: Int, id2: Int, id3: Int, id4: Int): Country
 
+    @Query("SELECT * FROM countries WHERE name LIKE '%' || :countryName || '%' OR code LIKE '%' || :countryName || '%'")
+    suspend fun searchByCountryName(countryName: String) : List<Country>
+
 }

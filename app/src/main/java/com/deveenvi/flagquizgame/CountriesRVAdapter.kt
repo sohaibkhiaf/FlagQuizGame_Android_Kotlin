@@ -12,14 +12,14 @@ import com.deveenvi.flagquizgame.database.Country
 import com.deveenvi.flagquizgame.database.CountryDatabase
 import kotlinx.coroutines.launch
 
-class CountriesRVAdapter(var countries : MutableList<Country>, val lifecycleScope: LifecycleCoroutineScope )
+class CountriesRVAdapter(var countries : MutableList<Country>, var searchMode: Boolean ,val lifecycleScope: LifecycleCoroutineScope )
     : RecyclerView.Adapter<CountriesRVAdapter.CountryViewHolder>() {
 
     class CountryViewHolder (itemView: View) : RecyclerView.ViewHolder(itemView){
-        val flag_iv = itemView.findViewById<ImageView>(R.id.countryRVItem_iv_flag)
-        val name_tv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryName)
-        val area_tv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryArea)
-        val population_tv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryPopulation)
+        val flagIv = itemView.findViewById<ImageView>(R.id.countryRVItem_iv_flag)
+        val nameTv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryName)
+        val areaTv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryArea)
+        val populationTv = itemView.findViewById<TextView>(R.id.countryRVItem_tv_countryPopulation)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CountryViewHolder {
@@ -31,34 +31,38 @@ class CountriesRVAdapter(var countries : MutableList<Country>, val lifecycleScop
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         val country = countries[position]
 
-        val flagResID = holder.flag_iv.context.resources
+        val flagResID = holder.flagIv.context.resources
             .getIdentifier(country.flag, "drawable",
-                holder.flag_iv.context.packageName)
+                holder.flagIv.context.packageName)
         if (flagResID != 0) {
-            holder.flag_iv.setImageResource(flagResID)
+            holder.flagIv.setImageResource(flagResID)
         }
 
-        holder.name_tv.text = country.name
-        holder.area_tv.text = country.area
-        holder.population_tv.text = country.population
+        holder.nameTv.text = country.name
+        holder.areaTv.text = country.area
+        holder.populationTv.text = country.population
 
         holder.itemView.setOnClickListener {
             Toast.makeText(holder.itemView.context, country.code, Toast.LENGTH_SHORT).show()
         }
 
-        val currentItemID = position+1
-        val nextItemID = currentItemID+1
+        if (!searchMode){
+            val currentItemID = position+1
+            val nextItemID = currentItemID+1
 
-        if ( (currentItemID) >= countries.size ){
-            val db = CountryDatabase.getDatabase(holder.itemView.context)
-            val countryDao = db.countryDao()
+            if ( (currentItemID) >= countries.size ){
+                val db = CountryDatabase.getDatabase(holder.itemView.context)
+                val countryDao = db.countryDao()
 
-            lifecycleScope.launch {
-                countries = countryDao.getNextTenElements(nextItemID).toMutableList()
-                notifyItemRangeInserted(currentItemID, itemCount)
+                lifecycleScope.launch {
+                    countries = countryDao.getNextTenElements(nextItemID).toMutableList()
+                    notifyItemRangeInserted(currentItemID, itemCount)
+                    // Toast.makeText(holder.itemView.context, "laod", Toast.LENGTH_SHORT).show()
+                }
+
             }
-
         }
+
     }
 
     override fun getItemCount(): Int {

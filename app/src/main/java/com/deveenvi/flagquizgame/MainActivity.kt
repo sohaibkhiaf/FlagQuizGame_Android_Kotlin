@@ -1,6 +1,7 @@
 package com.deveenvi.flagquizgame
 
 import android.os.Bundle
+import android.view.View
 import android.widget.Toast
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
@@ -41,6 +42,7 @@ class MainActivity : AppCompatActivity() {
             }
         )
 
+        // open game fragment by default
         if (selected == GAME || selected == null) {
             openGameFragment()
             selected = GAME
